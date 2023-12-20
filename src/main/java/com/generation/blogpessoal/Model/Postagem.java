@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.Model;
+package com.generation.blogpessoal.model;
 
 import java.time.LocalDateTime;
 
@@ -17,29 +17,33 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name= "tb_postagens")//= create table
+@Table(name = "tb_postagens") // = create table
 public class Postagem {
 
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(length=100)
-	@NotBlank(message ="O Atributo titulo é obrigatorio!")
-	@Size(min = 5, max =100, message="O Atributo titulo deve conter no minimo 5 e no maximo 100 caracteres.")
+
+	@Column(length = 100)
+	@NotBlank(message = "O Atributo titulo é obrigatorio!")
+	@Size(min = 5, max = 100, message = "O Atributo titulo deve conter no minimo 5 e no maximo 100 caracteres.")
 	private String titulo;
-	
-	@Column(length=1000)
-	@NotBlank(message ="O Atributo texto é obrigatorio!")
-	@Size(min = 10, max =1000, message="O Atributo texto deve conter no minimo 10 e no maximo 1000 caracteres.")
+
+	@Column(length = 1000)
+	@NotBlank(message = "O Atributo texto é obrigatorio!")
+	@Size(min = 10, max = 1000, message = "O Atributo texto deve conter no minimo 10 e no maximo 1000 caracteres.")
 	private String texto;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime data;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -80,5 +84,13 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
