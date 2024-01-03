@@ -9,6 +9,12 @@ public class UsuarioLogin {
 	private String foto;
 	private String token;
 
+	
+	
+	public UsuarioLogin() {
+		super();
+	}
+
 	public UsuarioLogin(Long id, String nome, String usuario, String senha, String foto, String token) {
 		super();
 		this.id = id;

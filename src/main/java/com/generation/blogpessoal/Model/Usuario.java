@@ -8,6 +8,7 @@ package com.generation.blogpessoal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
+	
 	@Entity
 	@Table(name = "tb_usuarios")
 	public class Usuario {
@@ -33,7 +34,7 @@ import jakarta.validation.constraints.Size;
 
 		@NotNull(message = "O Atributo Nome é Obrigatório!")
 		private String nome;
-
+		@Schema(example = "email@email.com.br")
 		@NotNull(message = "O Atributo Usuário é Obrigatório!")
 		@Email(message = "O Atributo Usuário deve ser um email válido!")
 		private String usuario;
